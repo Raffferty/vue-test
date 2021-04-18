@@ -44,16 +44,18 @@ const mutations = {
     state.totalCount = totalCount;
   },
 
+  SET_PAGE(state, page) {
+    state.page = page;
+  },
+
   SET_NEXT_PAGE(state) {
     state.page = state.page + 1;
   },
 
   SET_QUERY_QUALIFIER(state, qualifier) {
     state.query = {
+      ...state.query,
       q: qualifier,
-      sort: 'stars',
-      order: 'desc',
-      per_page: 100,
     };
   },
 
@@ -207,6 +209,7 @@ const actions = {
 
     commit('CLEAR_REPOS');
     commit('SET_QUERY_QUALIFIER', qualifier);
+    commit('SET_PAGE', 1);
     dispatch('setRepoInfoToShow', null);
     dispatch('fetchRepos');
   },

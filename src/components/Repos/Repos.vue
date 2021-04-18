@@ -57,7 +57,7 @@
                   hasNext &&
                   index === repos.length - 1
                     ? {
-                        callback: fetchMore,
+                        callback: fetchMoreRepos,
                         intersection: {
                           threshold: 0.3,
                         },
@@ -174,6 +174,12 @@ export default {
       'fetchMore',
       'search',
     ]),
+
+    fetchMoreRepos(isVisable) {
+      if (!isVisable) return;
+
+      this.fetchMore();
+    },
 
     showRepoInfo(repo) {
       if (this.repoNameToSearch) {

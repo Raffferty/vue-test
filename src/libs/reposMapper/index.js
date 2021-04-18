@@ -1,6 +1,5 @@
 export const reposMapper = (rawReposRecord, favoriteRepos = []) => {
   const reposRecord = Object.create(null);
-  reposRecord.totalCount = 0;
   let repos = [];
 
   if (rawReposRecord.items?.length > 0) {
