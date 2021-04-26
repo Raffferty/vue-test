@@ -8,17 +8,11 @@
       <div class="card-repo__position">{{ position }}</div>
       <div class="card-repo__fullName">{{ fullName }}</div>
       <div class="card-repo__stars">{{ stars }}</div>
-      <img
-        v-if="isFavorite"
+
+      <span
         class="card-repo__icon-star"
-        :alt="`star-${fullName}`"
-        src="@/assets/icons/star-yellow.svg"
-      />
-      <img
-        v-else
-        class="card-repo__icon-star"
-        :alt="`star-${fullName}`"
-        src="@/assets/icons/star-white.svg"
+        :style="{ color: isFavorite ? 'yellow' : 'white' }"
+        v-html="require('@/assets/icons/star.svg')"
       />
     </div>
 
@@ -97,10 +91,12 @@ export default {
 }
 
 .card-repo__icon-star {
-  height: 20px;
-  width: 20px;
+  width: 25px;
   margin-right: 2.2rem;
-  margin-bottom: 2px;
+}
+
+.card-repo__icon-star svg {
+  fill: currentColor;
 }
 
 .card-repo-divider {

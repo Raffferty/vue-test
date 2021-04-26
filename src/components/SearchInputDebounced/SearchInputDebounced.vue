@@ -13,7 +13,7 @@
         @keydown.esc="onEscape"
       />
 
-      <img class="search-icon" alt="searcher" src="@/assets/icons/search.svg" />
+      <span class="search-icon" v-html="require('@/assets/icons/search.svg')" />
     </div>
   </div>
 </template>
@@ -81,7 +81,6 @@ export default {
   border-radius: 5px;
   font-size: medium;
   color: blue;
-
 }
 
 .search-icon {
@@ -90,5 +89,10 @@ export default {
   height: 1rem;
   top: 0.7rem;
   right: 0.5rem;
+  color: gray
+}
+
+.search-icon svg {
+  fill: currentColor
 }
 </style>

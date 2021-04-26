@@ -3,17 +3,10 @@
     <div class="card-repo-info__title">
       <p>{{ fullName }}</p>
 
-      <img
-        v-if="isFavorite"
-        class="card-repo-info__icon-star"
-        :alt="`star-${fullName}`"
-        src="@/assets/icons/star-yellow.svg"
-      />
-      <img
-        v-else
-        class="card-repo-info__icon-star"
-        :alt="`star-${fullName}`"
-        src="@/assets/icons/star-white.svg"
+      <span
+        class="card-repo-info__icons"
+        :style="{ color: isFavorite ? 'yellow' : 'white' }"
+        v-html="require('@/assets/icons/star.svg')"
       />
 
       <div>{{ stars }}</div>
@@ -50,11 +43,11 @@
 
       <div class="card-repo-info__name-block">
         <div class="card-repo-info__name">{{ name }}</div>
-        <img
-          height="20rem"
-          width="20rem"
-          alt="github"
-          src="@/assets/icons/github.svg"
+
+        <span
+          class="card-repo-info__icons"
+          :style="{ color: 'black' }"
+          v-html="require('@/assets/icons/github.svg')"
         />
       </div>
     </div>
@@ -155,11 +148,13 @@ export default {
   text-overflow: ellipsis;
 }
 
-.card-repo-info__icon-star {
-  height: 20px;
+.card-repo-info__icons {
   width: 20px;
   margin-right: 0.2rem;
-  margin-bottom: 2px;
+}
+
+.card-repo-info__icons svg {
+  fill: currentColor;
 }
 
 .card-repo-info__content {
